@@ -5,24 +5,33 @@ interface Balance {
   outcome: number;
   total: number;
 }
+interface CreateTransactionDTO {
+  title: string;
+  value: number;
+  type: 'income' | 'outcome';
+}
 
 class TransactionsRepository {
   private transactions: Transaction[];
 
-  constructor() {
+  constructor(transactions: Transactions) {
     this.transactions = [];
   }
 
   public all(): Transaction[] {
-    // TODO
+    return this.transactions;
   }
 
   public getBalance(): Balance {
     // TODO
   }
 
-  public create(): Transaction {
-    // TODO
+  public create({ title, value, type }: CreateTransactionDTO): Transaction {
+    const transaction = new Transaction(title, value, type);
+
+    this.transactions.push(transaction);
+
+    return transaction;
   }
 }
 
