@@ -19,12 +19,11 @@ class TransactionsRepository {
   }
 
   public all(): Transaction[] {
+    this.getBalance();
     return this.transactions;
   }
 
-  public getBalance(): Balance {
-    // TODO
-  }
+  public getBalance(): Balance {}
 
   public create({ title, value, type }: CreateTransactionDTO): Transaction {
     const transaction = new Transaction({ title, value, type });
