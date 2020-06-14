@@ -14,7 +14,7 @@ interface CreateTransactionDTO {
 class TransactionsRepository {
   private transactions: Transaction[];
 
-  constructor(transactions: Transactions) {
+  constructor() {
     this.transactions = [];
   }
 
@@ -27,7 +27,7 @@ class TransactionsRepository {
   }
 
   public create({ title, value, type }: CreateTransactionDTO): Transaction {
-    const transaction = new Transaction(title, value, type);
+    const transaction = new Transaction({ title, value, type });
 
     this.transactions.push(transaction);
 

@@ -15,9 +15,12 @@ class CreateTransactionService {
   }
 
   public execute({ title, value, type }: Request): Transaction {
-    const createTransaction = this.transactionsRepository.create(
-      createTransaction,
-    );
+    const createTransaction = this.transactionsRepository.create({
+      title,
+      value,
+      type,
+    });
+    return createTransaction;
   }
 }
 
